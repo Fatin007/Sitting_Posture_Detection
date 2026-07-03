@@ -408,4 +408,3 @@ This project is created for academic/research purposes as part of a thesis on po
 
 ---
 
-*Built with ❤️ using PlatformIO, TensorFlow, MediaPipe, and Blynk IoT.*
