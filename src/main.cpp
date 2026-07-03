@@ -218,8 +218,8 @@ void setup()
     {
         Serial.println("PSRAM Found");
 
-        config.frame_size = FRAMESIZE_HVGA;
-        config.jpeg_quality = 15;
+        config.frame_size = FRAMESIZE_SVGA;
+        config.jpeg_quality = 10;
         config.fb_count = 2;
         config.grab_mode = CAMERA_GRAB_LATEST;
     }
@@ -227,8 +227,8 @@ void setup()
     {
         Serial.println("No PSRAM");
 
-        config.frame_size = FRAMESIZE_HVGA;
-        config.jpeg_quality = 18;
+        config.frame_size = FRAMESIZE_SVGA;
+        config.jpeg_quality = 12;
         config.fb_count = 1;
         config.grab_mode = CAMERA_GRAB_WHEN_EMPTY;
     }
@@ -247,7 +247,7 @@ void setup()
     s->set_contrast(s,0);
     s->set_saturation(s,0);
     s->set_sharpness(s,1);
-    s->set_framesize(s,FRAMESIZE_HVGA);
+    s->set_framesize(s,FRAMESIZE_SVGA);
 
     // Initialize buzzer pin
     pinMode(BUZZER_PIN, OUTPUT);
