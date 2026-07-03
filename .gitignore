@@ -1,0 +1,4 @@
+**/data/*.npy
+**/models/*.h5
+__pycache__/
+.vscode/
