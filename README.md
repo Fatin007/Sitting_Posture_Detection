@@ -26,7 +26,7 @@ An IoT-based real-time sitting posture monitoring and alert system using **ESP32
 ```mermaid
 flowchart TB
     subgraph Hardware["ESP32-CAM (Edge Device)"]
-        CAM[OV2640 Camera]
+        CAM[OV3660 Camera]
         WIFI[WiFi Module]
         BUZZ[Buzzer GPIO4]
         SRV[HTTP Server :80]
@@ -146,7 +146,7 @@ Sitting_Posture_Detection/
 | Component       | Description                          |
 |-----------------|--------------------------------------|
 | **ESP32-CAM**   | AI-Thinker ESP32-CAM module          |
-| **OV2640**      | 2MP camera (built into ESP32-CAM)    |
+| **OV3660**      | 3MP camera (built into ESP32-CAM)    |
 | **Buzzer**      | Active/passive buzzer on GPIO 4      |
 | **FTDI/USB-TTL**| For programming the ESP32-CAM        |
 | **5V Power**    | USB or external 5V supply            |
