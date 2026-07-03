@@ -148,7 +148,7 @@ Sitting_Posture_Detection/
 | **ESP32-CAM**   | AI-Thinker ESP32-CAM module          |
 | **OV3660**      | 3MP camera (built into ESP32-CAM)    |
 | **Buzzer**      | Active/passive buzzer on GPIO 4      |
-| **FTDI/USB-TTL**| For programming the ESP32-CAM        |
+| **FTDI**| For programming the ESP32-CAM        |
 | **5V Power**    | USB or external 5V supply            |
 
 ### ESP32-CAM Pin Mapping (AI-Thinker)
