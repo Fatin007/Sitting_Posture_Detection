@@ -31,7 +31,7 @@ env/
 *.joblib
 
 # Videos
-Sitting_posture_research/videos/
+# Sitting_posture_research/videos/
 
 # OS files
 .DS_Store
