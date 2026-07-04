@@ -75,33 +75,43 @@ flowchart TB
 
 ```mermaid
 sequenceDiagram
+    %% Custom styling for a colorful look
+    style CAM fill:#ffb3ba,stroke:#333,stroke-width:2px,color:#000
+    style ML fill:#baffc9,stroke:#333,stroke-width:2px,color:#000
+    style CLOUD fill:#bae1ff,stroke:#333,stroke-width:2px,color:#000
+    style PHONE fill:#ffffba,stroke:#333,stroke-width:2px,color:#000
+
     participant CAM as ESP32-CAM
     participant ML as Python ML
     participant CLOUD as Blynk Cloud
     participant PHONE as User Phone
 
     Note over CAM: Step 1: Device Starts
-    CAM->>CAM: Power on and connect to WiFi
-    CAM->>CAM: Begin live video stream
+    CAM->>CAM: Power on
+    CAM->>CAM: Connect to Wi-Fi
+    CAM->>CAM: Start live video stream
 
     Note over ML: Step 2: ML Connects
-    ML->>CAM: Open live video feed
+    ML->>CAM: Open live video stream
     activate ML
 
-    loop Every Frame (Real-time)
-        ML->>ML: Grab a video frame
-        ML->>ML: Detect body position (MediaPipe)
-        ML->>ML: Measure posture angles
-        ML->>ML: ML model decides: GOOD or BAD?
+    loop Every Frame (Real-Time)
+        ML->>ML: Capture video frame
+        ML->>ML: Detect body landmarks (MediaPipe)
+        ML->>ML: Calculate posture angles
+        ML->>ML: Classify posture (GOOD/BAD)
     end
 
-    Note over ML,PHONE: Step 3: Bad Posture Alert
-    alt Bad Posture for 20+ seconds
-        ML->>CLOUD: Send alert notification
-        ML->>CLOUD: Update dashboard status
-        ML->>CAM: Activate buzzer alarm
-        CAM->>CAM: Buzzer sounds for 3 seconds
-        CLOUD->>PHONE: "Bad Posture De tected!" alert
+    Note over ML,PHONE: Step 3: Bad Posture Detection
+
+    alt Bad posture persists for 20+ seconds
+        ML->>CLOUD: Update dashboard data
+        ML->>CLOUD: Send push notification
+        ML->>CAM: Turn buzzer ON
+        CAM->>CAM: Beep for 3 seconds
+        CLOUD->>PHONE: Push notification<br/>"Bad Posture Detected!"
+    else Good posture
+        ML->>CLOUD: Update dashboard (Good Posture)
     end
 
     deactivate ML
