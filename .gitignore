@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+**/data/*.npy
+**/models/*.h5
+__pycache__/
+.vscode/
+=======
 # PlatformIO
 .pio
 .vscode/.browse.c_cpp.db*
@@ -47,3 +53,4 @@ Desktop.ini
 # Environment
 .env
 .env.local
+>>>>>>> 4fa78ee5d6f50eb91487271f90cf561fd2c1fc7a
