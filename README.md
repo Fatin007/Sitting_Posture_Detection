@@ -99,13 +99,6 @@ sequenceDiagram
         ESP32->>ESP32: Activate buzzer for 3s
         Blynk->>User: Push alert on smartphone
     end
-
-    opt Blynk Button Pressed
-        User->>Blynk: Press buzzer button (V1)
-        PC->>Blynk: Poll V1 every 2s
-        PC->>ESP32: HTTP GET /buzzer
-        ESP32->>ESP32: Activate buzzer for 3s
-    end
 ```
 
 ---
@@ -150,20 +143,6 @@ Sitting_Posture_Detection/
 | **Buzzer**      | Active/passive buzzer on GPIO 4      |
 | **FTDI**| For programming the ESP32-CAM        |
 | **5V Power**    | USB or external 5V supply            |
-
-### ESP32-CAM Pin Mapping (AI-Thinker)
-
-| Signal  | GPIO |
-|---------|------|
-| XCLK    | 0    |
-| SIOD    | 26   |
-| SIOC    | 27   |
-| Y9–Y2   | 35, 34, 39, 36, 21, 19, 18, 5 |
-| VSYNC   | 25   |
-| HREF    | 23   |
-| PCLK    | 22   |
-| PWDN    | 32   |
-| **Buzzer** | **4** |
 
 ---
 
