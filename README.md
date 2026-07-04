@@ -75,30 +75,36 @@ flowchart TB
 
 ```mermaid
 sequenceDiagram
-    participant ESP32 as ESP32-CAM
-    participant PC as Python Processor
-    participant Blynk as Blynk Cloud
-    participant User as User Phone
+    participant CAM as 📷 ESP32-CAM
+    participant AI as 🧠 Python AI (PC)
+    participant CLOUD as ☁️ Blynk Cloud
+    participant PHONE as 📱 Your Phone
 
-    ESP32->>ESP32: Boot & connect WiFi
-    ESP32->>ESP32: Start MJPEG stream on port 80
+    Note over CAM: Step 1: Device Starts
+    CAM->>CAM: Power on & connect to WiFi
+    CAM->>CAM: Begin live video stream
 
-    PC->>ESP32: Connect to http://IP/stream
-    loop Every Frame
-        PC->>PC: Capture frame via OpenCV
-        PC->>PC: MediaPipe extracts pose landmarks
-        PC->>PC: Compute 5 geometric features
-        PC->>PC: Feed 60-frame window to LSTM
-        PC->>PC: Classify GOOD vs BAD posture
+    Note over AI: Step 2: AI Connects
+    AI->>CAM: Open live video feed
+    activate AI
+
+    loop 🔄 Every Frame (Real-time)
+        AI->>AI: Grab a video frame
+        AI->>AI: Detect body position (MediaPipe)
+        AI->>AI: Measure posture angles
+        AI->>AI: AI model decides: GOOD or BAD?
     end
 
-    alt Bad Posture > 20 seconds
-        PC->>Blynk: Send push notification (logEvent)
-        PC->>Blynk: Update dashboard V0
-        PC->>ESP32: HTTP GET /buzzer
-        ESP32->>ESP32: Activate buzzer for 3s
-        Blynk->>User: Push alert on smartphone
+    Note over AI,PHONE: Step 3: Bad Posture Alert
+    alt ⚠️ Bad Posture for 20+ seconds
+        AI->>CLOUD: Send alert notification
+        AI->>CLOUD: Update dashboard status
+        AI->>CAM: Activate buzzer alarm!
+        CAM->>CAM: 🔔 Buzzer sounds for 3 seconds
+        CLOUD->>PHONE: 📩 "Bad Posture Detected!"
     end
+
+    deactivate AI
 ```
 
 ---
