@@ -76,9 +76,9 @@ flowchart TB
 ```mermaid
 sequenceDiagram
     participant CAM as ESP32-CAM
-    participant ML as Python ML (PC)
+    participant ML as Python ML
     participant CLOUD as Blynk Cloud
-    participant PHONE as Your Phone
+    participant PHONE as User Phone
 
     Note over CAM: Step 1: Device Starts
     CAM->>CAM: Power on and connect to WiFi
